@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        button[type="button"],
+        button[type="submit"] {
+            width: calc(100% - 20px); /* Adjusted width to account for button padding */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: #0056b3;
+        }
+
+        .telephone-input {
+            position: relative;
+        }
+
+        .delete-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        .error {
+            border-color: #ff0000 !important;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: #008000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .add-button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulaire de Contact</h1>
+    <form id="contactForm">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+        <br>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <br>
+        <div id="telephoneInputs">
+            <div class="telephone-input">
+                <label for="telephone1">Téléphone :</label>
+                <input type="tel" id="telephone1" name="telephone1" required>
+                <a href="#" class="delete-link" style="display: none;">Supprimer</a>
+                <br>
+                <span class="error-message" id="telephoneError1"></span>
+            </div>
+        </div>
+        <button type="button" class="add-button" onclick="ajouterTelephone()">Ajouter numéro de téléphone</button>
+        <br> <!-- Added line break here -->
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <script>
+        function ajouterTelephone() {
+            const form = document.getElementById("contactForm");
+            const telephoneInputs = document.querySelectorAll('.telephone-input');
+            const lastTelephoneInput = telephoneInputs[telephoneInputs.length - 1];
+            const newTelephoneInput = document.createElement('div');
+            newTelephoneInput.classList.add('telephone-input');
+
+            const newLabel = document.createElement('label');
+            newLabel.textContent = 'Téléphone :';
+            newLabel.htmlFor = 'telephone' + (telephoneInputs.length + 1);
+
+            const newInput = document.createElement('input');
+            newInput.type = 'tel';
+            newInput.id = 'telephone' + (telephoneInputs.length + 1);
+            newInput.name = 'telephone' + (telephoneInputs.length + 1);
+            newInput.required = true;
+
+            const deleteLink = document.createElement('a');
+            deleteLink.textContent = 'Supprimer';
+            deleteLink.href = '#';
+            deleteLink.classList.add('delete-link');
+            deleteLink.onclick = function() {
+                supprimerTelephone(newTelephoneInput);
+                return false;
+            };
+
+            const errorMessage = document.createElement('span');
+            errorMessage.classList.add('error-message');
+            errorMessage.id = 'telephoneError' + (telephoneInputs.length + 1);
+
+            newTelephoneInput.appendChild(newLabel);
+            newTelephoneInput.appendChild(newInput);
+            newTelephoneInput.appendChild(deleteLink);
+            newTelephoneInput.appendChild(errorMessage);
+            
+            form.insertBefore(newTelephoneInput, form.querySelector('button[type="submit"]').previousSibling);
+            form.insertBefore(document.createElement('br'), form.querySelector('button[type="submit"]').previousSibling); // Add line break after the new field
+        }
+
+        function supprimerTelephone(input) {
+            const form = document.getElementById("contactForm");
+            const telephoneInputs = document.querySelectorAll('.telephone-input');
+            if (telephoneInputs.length > 1 && input !== telephoneInputs[0]) {
+                input.remove();
+            }
+        }
+
+        function validateForm() {
+            const form = document.getElementById("contactForm");
+            const inputs = form.querySelectorAll('input[type="text"], input[type="tel"]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (input.required && !input.value.trim()) {
+                    input.classList.add("error");
+                    const errorMessageId = input.id + 'Error'; // Extract the number from input id
+                    document.getElementById(errorMessageId).textContent = "Champ obligatoire !";
+                    isValid = false;
+                } else {
+                    input.classList.remove("error");
+                    const errorMessageId = input.id + 'Error'; // Extract the number from input id
+                    document.getElementById(errorMessageId).textContent = "";
+                }
+            });
+
+            return isValid;
+        }
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            if (!validateForm()) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

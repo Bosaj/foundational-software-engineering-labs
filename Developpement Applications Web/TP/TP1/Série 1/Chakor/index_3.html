@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercice 4</title>
+    <style>
+      .container {
+        box-sizing: border-box;
+        width: 900px;
+        margin: 0 auto;
+        font-family: sans-serif;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .nav a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px;
+        color: #fff;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      .nav a:hover {
+        box-shadow: 5px 5px 5px rgba(114, 114, 114, 0.3);
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        margin-top: 15px;
+        background-color: #e9e9e9;
+      }
+
+      .nav li:nth-child(1) {
+        background-color: #92ce0a;
+      }
+      .nav li:nth-child(2) {
+        background-color: #ffe202;
+      }
+      .nav li:nth-child(3) {
+        background-color: #0052da;
+      }
+      .nav li:nth-child(4) {
+        background-color: #ff7f00;
+      }
+      .nav li:nth-child(5) {
+        background-color: #04bacf;
+      }
+
+      #h1_first {
+        font-size: 36px;
+        color: white;
+        font-weight: bold;
+        background-color: #92ce0a;
+        width: 500px;
+        text-align: center;
+        margin-top: 0;
+        padding: 50px 0;
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+      }
+      article {
+        display: flex;
+        gap: 80px;
+      }
+      #h1_secend {
+        font-size: 36px;
+        color: white;
+        font-weight: bold;
+        background-color: #ff5241;
+        margin-top: 0;
+        text-align: center;
+        padding: 15px 0;
+      }
+      .aside {
+        display: flex;
+        flex-direction: column;
+      }
+      h2 {
+        font-size: 30px;
+        font-weight: normal;
+      }
+
+      .kid h2 {
+        color: #0052da;
+      }
+      .kids {
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        margin-bottom: 70px;
+      }
+      .kids li {
+        padding: 10px 10px 15px 10px;
+      }
+      #kid_1 {
+        background-color: #92ce0a;
+      }
+      #kid_2 {
+        background-color: #ffe202;
+      }
+      #kid_3 {
+        background-color: #0052da;
+      }
+      #kid_4 {
+        background-color: #ff7f00;
+      }
+      .kids p {
+        margin: 0;
+      }
+      .kid ul {
+        list-style-type: none;
+      }
+      ul li p {
+        color: white;
+        font-weight: bold;
+      }
+      #us_h2 {
+        color: #0052da;
+        font-size: 25px;
+        margin-bottom: 5px;
+      }
+      .us {
+        display: flex;
+        gap: 10px;
+        flex-grow: 0;
+        margin-bottom: 30px;
+      }
+      .us p {
+        flex: 0 0 300px;
+      }
+      footer {
+        border-top: 2px solid rgb(185, 185, 185);
+      }
+      h3 {
+        margin-bottom: 0px;
+        color: #0052da;
+        font-weight: bold;
+      }
+      footer p {
+        margin-top: 2px;
+        font-size: 10px;
+      }
+      .logos li img {
+        width: 40px;
+        height: 40px;
+      }
+      .logos ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 4px;
+      }
+
+      .logos li:nth-child(1) {
+        background-color: #92ce0a;
+      }
+      .logos li:nth-child(2) {
+        background-color: #ffe202;
+      }
+      .logos li:nth-child(3) {
+        background-color: #0052da;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      @media screen and (max-width: 500px) {
+            .logo {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+            .nav a {
+                float: none;
+            }
+        }
+    </style>
+  </head>
+  <body class="container">
+    <header>
+      <div class="logo">
+        <img src="images/logo.jpg" alt="logo" width="200px" height="100px" />
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">VIDEOS</a></li>
+          <li><a href="#">COMPAIGNS</a></li>
+          <li><a href="#">VOLUNTEER</a></li>
+          <li><a href="index_4.html">CONTACTS</a></li>
+        </ul>
+      </div>
+    </header>
+    <article>
+      <div class="section">
+        <img src="images/page1_img1.jpg" alt="kid" width="500px" height="300" />
+        <h1 id="h1_first">HOPE</h1>
+      </div>
+      <div class="aside">
+        <h1 id="h1_secend">DONATE</h1>
+        <h2>We can change the life of those who have no hope</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+          dignissimos, assumenda nemo tempore, natus illum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          nulla minus quis consequatur ea odit reiciendis libero. Atque ex
+          distinctio.
+        </p>
+      </div>
+    </article>
+    <div class="kid">
+      <h2>YOU CAN HELP THEM</h2>
+      <ul class="kids">
+        <li id="kid_1">
+          <img src="images/page1_img4.jpg" alt="kid_1" />
+          <p>
+            Jim<br />
+            8 years
+          </p>
+        </li>
+        <li id="kid_2">
+          <img src="images/page1_img5.jpg" alt="kid_2" />
+          <p>Ann<br />3 years</p>
+        </li>
+        <li id="kid_3">
+          <img src="images/page1_img6.jpg" alt="kid_3" />
+          <p>Linda<br />5 years</p>
+        </li>
+        <li id="kid_4">
+          <img src="images/page1_img7.jpg" alt="kid_4" />
+          <p>Mark<br />6 years</p>
+        </li>
+      </ul>
+    </div>
+    <h2 id="us_h2">ABOUT US</h2>
+    <div class="us">
+      <img src="images/page1_img8.jpg" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+        possimus voluptatum molestiae unde! Amet minima magnam veritatis rerum
+        hic.Corrupti porro odio aut.
+      </p>
+    </div>
+    <footer>
+      <div class="footer">
+        <div>
+          <h3>Dev digital</h3>
+          <p>© 2020 | Privacy Policy</p>
+        </div>
+        <div class="logos">
+          <ul>
+            <li><img src="images/facebook.png" alt="facebook" /></li>
+            <li><img src="images/pinterest.png" alt="pinterest" /></li>
+            <li><img src="images/twitter.png" alt="twitter" /></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

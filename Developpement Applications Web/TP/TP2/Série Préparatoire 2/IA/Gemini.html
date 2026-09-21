@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de contact</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        .champ {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .champ label {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        .telephones {
+            margin-bottom: 10px;
+        }
+
+        .telephone {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .telephone a {
+            margin-left: 10px;
+            color: #000;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <form id="contact-form">
+        <h2>Formulaire de contact</h2>
+      
+        <div class="champ">
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" name="nom" required>
+        </div>
+      
+        <div class="champ">
+          <label for="prenom">Prénom:</label>
+          <input type="text" id="prenom" name="prenom" required>
+        </div>
+      
+        <div class="telephones">
+          <div class="telephone">
+            <label for="telephone1">Téléphone:</label>
+            <input type="tel" id="telephone1" name="telephone[]" required>
+          </div>
+          </div>
+      
+        <button type="button" id="ajouter-telephone">Ajouter un numéro de téléphone</button>
+      
+        <div class="bouton-envoi">
+          <button type="submit">Envoyer</button>
+        </div>
+      
+        <p class="message-erreur"></p>
+      </form>      
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const ajouterTelephone = document.getElementById('ajouter-telephone');
+        const telephones = document.querySelector('.telephones');
+        const messageErreur = document.querySelector('.message-erreur');
+
+        // Fonction pour ajouter un nouveau champ de téléphone
+        function ajouterChampTelephone() {
+        // Créer un nouveau bloc "telephone"
+        const telephone = document.createElement('div');
+        telephone.classList.add('telephone');
+
+        // Créer le label et l'input
+        const label = document.createElement('label');
+        label.textContent = 'Téléphone:';
+        const input = document.createElement('input');
+        input.type = 'tel';
+        input.name = 'telephone[]';
+        input.required = true;
+
+        // Ajouter le label et l'input au bloc "telephone"
+        telephone.appendChild(label);
+        telephone.appendChild(input);
+
+        // Ajouter le nouveau bloc "telephone" à la fin du container
+        telephones.appendChild(telephone);
+
+        // Gérer la suppression du nouveau champ
+        const lienSupprimer = document.createElement('a');
+        lienSupprimer.href = '#';
+        lienSupprimer.textContent = 'Supprimer';
+        lienSupprimer.addEventListener('click', (e) => {
+            e.preventDefault();
+            telephone.parentNode.removeChild(telephone);
+        });
+
+        telephone.appendChild(lienSupprimer);
+        }
+
+        // Ajouter un événement au clic sur le bouton "Ajouter un numéro de téléphone"
+        ajouterTelephone.addEventListener('click', ajouterChampTelephone);
+
+        // Fonction pour valider le formulaire
+        form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Réinitialiser les bordures et le message d'erreur
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.style.borderColor = '';
+        });
+        messageErreur.textContent = '';
+
+        // Vérifier si tous les champs sont remplis
+        let tousValides = true;
+        for (const input of inputs) {
+            if (!input.value) {
+            input.style.borderColor = 'red';
+            tousValides = false;
+            } else {
+            input.style.borderColor = 'green';
+            }
+        }
+
+        // Envoyer le formulaire si tous les champs sont valides
+        if (tousValides) {
+            form.submit();
+        } else {
+            messageErreur.textContent = 'Tous les champs sont obligatoires !';
+        }
+        });
+
+        // Initialiser le premier champ de téléphone
+        ajouterChampTelephone();
+
+    </script>
+</body>
+</html>

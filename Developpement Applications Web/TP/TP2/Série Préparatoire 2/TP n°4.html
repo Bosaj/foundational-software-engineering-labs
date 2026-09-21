@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP N° 4 - Fonctions fléchées avec HTML et CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #result-container {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>TP N° 4 - Fonctions fléchées avec HTML et CSS</h1>
+
+    <button onclick="calculateFunction1(3)">Calculer fonction1(3)</button><br>
+    <button onclick="calculateFunction2(2, 3)">Calculer fonction2(2, 3)</button><br>
+    <button onclick="calculateFunction0()">Calculer fonction0()</button>
+
+    <div id="result-container"></div>
+
+    <script>
+        const resultContainer = document.getElementById('result-container');
+
+        
+        const fonction1 = x => x + 5;
+
+        
+        const fonction2 = (x, y) => x + y;
+
+        
+        const fonction0 = () => {
+            const userInput = prompt("Entrez un nombre :");
+            const number = parseFloat(userInput);
+            if (!isNaN(number)) {
+                return number + 2;
+            } else {
+                return "Entrée invalide. Veuillez saisir un nombre.";
+            }
+        };
+
+        function displayResult(result) {
+            resultContainer.innerText = "Résultat : " + result;
+        }
+
+        function calculateFunction1(x) {
+            const result = fonction1(x);
+            displayResult(result);
+        }
+
+        function calculateFunction2(x, y) {
+            const result = fonction2(x, y);
+            displayResult(result);
+        }
+
+        function calculateFunction0() {
+            const result = fonction0();
+            displayResult(result);
+        }
+    </script>
+</body>
+</html>

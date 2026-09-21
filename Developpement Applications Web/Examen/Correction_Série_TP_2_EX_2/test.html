@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1: Manipulation du DOM en JavaScript</title>
+</head>
+<body>
+    <h1>Exercice1 : Manipulation du DOM en JavaScript</h1>
+
+    <!-- Bouton pour créer une nouvelle div -->
+    <button id="createButton">Créer une nouvelle div</button>
+
+    <script>
+        // Étape 1: Création d'un bouton pour créer une nouvelle div
+        var createButton = document.getElementById('createButton');
+
+        // Étape 2: Définition de l'événement onclick pour créer une nouvelle div
+        createButton.onclick = function() {
+            // Étape 3: Création d'une nouvelle div
+            var newDiv = document.createElement('div');
+
+            // Étape 4: Modification du style de la nouvelle div
+            newDiv.style.backgroundColor = 'lightblue';
+            newDiv.style.padding = '10px';
+            newDiv.textContent = 'Nouvelle Div';
+
+            // Étape 5: Ajout de la nouvelle div au corps du document
+            document.body.appendChild(newDiv);
+
+            // Étape supplémentaire : Définition d'un événement onclick pour supprimer la nouvelle div
+            newDiv.onclick = function() {
+                // Étape supplémentaire: Suppression de la nouvelle div du corps du document lors du clic
+                document.body.removeChild(newDiv);
+            };
+
+        };
+    </script>
+</body>
+</html>

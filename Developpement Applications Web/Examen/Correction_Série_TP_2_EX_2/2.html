@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des Voitures</title>
+  
+</head>
+<style>
+    /* CSS for the Voitures List */
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff; /* Blue color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #dc3545; /* Red color */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #fff;
+    }
+
+    /* CSS for Delete Confirmation Modal */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 5px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 26px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* CSS for Success Message */
+
+    .success {
+      padding: 15px;
+      background-color: #007bff; /* Blue color */
+      color: white;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 20px;
+      line-height: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+</style>
+<body>
+  <label for="marqueInput">Marque :</label>
+  <input type="text" id="marqueInput">
+  <button onclick="getAllVoitures(true)">Filter</button>
+  <br><br>
+  <table id="voituresTable" border="1">
+    <thead>
+      <tr>
+        <th>Immatriculation</th>
+        <th>Marque</th>
+        <th>Couleur</th>
+        <th>Carburant</th>
+        <th>Prix par jour</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Les lignes du tableau seront générées par JavaScript -->
+    </tbody>
+  </table>
+
+  <script>
+    // Tableau contenant les voitures
+    var T_Voitures = [
+      {
+        Voiture: 1,
+        Immatriculation: "48-A-20000",
+        Marque: "Clio 3",
+        Couleur: "Noir",
+        Carburant: "Diesel",
+        Prix_Jour: 250
+      },
+      {
+        Voiture: 2,
+        Immatriculation: "48-A-20001",
+        Marque: "Clio 4",
+        Couleur: "Rouge",
+        Carburant: "Diesel",
+        Prix_Jour: 300
+      },
+      {
+        Voiture: 3,
+        Immatriculation: "48-A-20002",
+        Marque: "Dacia",
+        Couleur: "Noir",
+        Carburant: "Essence",
+        Prix_Jour: 200
+      }
+    ];
+
+    // Fonction pour afficher les voitures dans le tableau HTML
+    function getAllVoitures( filterBymarque = false ) {
+      voitures = T_Voitures
+
+      if (filterBymarque) 
+      {
+        var marqueInput = document.querySelector("#marqueInput");
+        var marque = marqueInput.value;
+
+        if (marque != '') {
+          voitures = T_Voitures.filter(function(voiture) {
+            return voiture.Marque.toLowerCase() === marque.toLowerCase();
+          });
+        }
+      }
+
+      var tbody = document.querySelector("#voituresTable tbody");
+      tbody.innerHTML = "";
+
+      voitures.forEach(function(voiture) {
+        var row = document.createElement("tr");
+
+        var immatriculationCell = document.createElement("td");
+        immatriculationCell.textContent = voiture.Immatriculation;
+        row.appendChild(immatriculationCell);
+
+        var marqueCell = document.createElement("td");
+        marqueCell.textContent = voiture.Marque;
+        row.appendChild(marqueCell);
+
+        var couleurCell = document.createElement("td");
+        couleurCell.textContent = voiture.Couleur;
+        row.appendChild(couleurCell);
+
+        var carburantCell = document.createElement("td");
+        carburantCell.textContent = voiture.Carburant;
+        row.appendChild(carburantCell);
+
+        var prixJourCell = document.createElement("td");
+        prixJourCell.textContent = voiture.Prix_Jour;
+        row.appendChild(prixJourCell);
+
+        var actionsCell = document.createElement("td");
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Supprimer";
+
+        deleteButton.onclick = function() {
+          var index = T_Voitures.indexOf(voiture);
+          if (index > -1) {
+            T_Voitures.splice(index, 1);
+            tbody.removeChild(row);
+          }
+        }
+
+        actionsCell.appendChild(deleteButton);
+        row.appendChild(actionsCell);
+
+        tbody.appendChild(row);
+      });
+    }
+
+    // Appel de la fonction pour afficher toutes les voitures au chargement de la page
+    getAllVoitures();
+  </script>
+</body>
+</html>

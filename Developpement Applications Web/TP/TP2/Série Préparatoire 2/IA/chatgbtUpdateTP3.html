@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP N°3 - Carrousel d'images</title>
+    <style>
+        :root {
+            --background-color: #f5f5f5; /* Light gray background color */
+            --border-color: #ccc; /* Border color */
+            --button-bg-color: rgba(0, 0, 0, 0.5); /* Background color for buttons */
+            --button-text-color: #fff; /* Text color for buttons */
+            --button-size: 40px; /* Size of the buttons */
+            --button-font-size: 20px; /* Font size of the buttons */
+        }
+
+        body {
+            background-color: var(--background-color); /* Use background color variable */
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 500px; /* Fixed width for the carousel container */
+            height: auto; /* Adjust height based on image height */
+            margin: 50px auto;
+            overflow: hidden;
+            border: 2px solid var(--border-color); /* Border for the carousel container */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: auto; /* Set the height of the carousel to the tallest image */
+        }
+
+        .carousel img {
+            width: 100%; /* Set width to match the container */
+            height: auto; /* Ensure the image maintains its aspect ratio */
+            display: block; /* Ensure proper spacing between images */
+            border-right: 2px solid var(--border-color); /* Border between images */
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: var(--button-size); /* Set button width */
+            height: var(--button-size); /* Set button height */
+            font-size: var(--button-font-size); /* Set button font size */
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            background-color: var(--button-bg-color); /* Use button background color variable */
+            color: var(--button-text-color); /* Use button text color variable */
+            opacity: 0.5; /* Semi-transparent by default */
+            transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        button:hover {
+            opacity: 0.8; /* Increase opacity on hover */
+        }
+
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+        <button id="prevBtn">❮</button>
+        <button id="nextBtn">❯</button>
+    </div>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        let intervalId;
+
+        function showImage(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % carousel.children.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + carousel.children.length) % carousel.children.length;
+            showImage(currentIndex);
+        }
+
+        function startCarousel() {
+            intervalId = setInterval(nextImage, 1000);
+        }
+
+        function stopCarousel() {
+            clearInterval(intervalId);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            stopCarousel();
+            nextImage();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopCarousel();
+            prevImage();
+        });
+
+        carousel.addEventListener('mouseover', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+
+        startCarousel();
+    </script>
+</body>
+</html>

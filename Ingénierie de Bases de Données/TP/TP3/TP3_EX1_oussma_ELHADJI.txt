@@ -1,0 +1,53 @@
+--Insérer les données suivantes :
+INSERT ALL 
+   INTO fournisseurs (code_fournisseur, nom_fournisseur) VALUES ('F01', 'Les stylos reunis')
+   INTO fournisseurs (code_fournisseur, nom_fournisseur) VALUES ('F02', 'Sarl Ali')
+   INTO fournisseurs (code_fournisseur, nom_fournisseur) VALUES ('F03', 'electrolamp')
+SELECT * FROM dual;
+
+	COMMIT;
+
+INSERT ALL
+	INTO categories(code_categorie, libelle_categorie)
+		VALUES	('C01', 'informatique')
+	INTO categories(code_categorie, libelle_categorie)
+		VALUES	('C02', 'Fournitures de bureau')
+	INTO categories(code_categorie, libelle_categorie)
+		VALUES('C03', 'Electronique')
+SELECT * FROM dual;
+
+INSERT ALL
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A01', 'Agrafeuse', 150, 'rouge', 150, 100, 10)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A02', 'Calculatrice', 150, 'Noir', 200, 200, 100)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A03', 'Cachet dateur', 100, 'Blanc', 300, 150, 30)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A04', 'Lampe1', 550, 'Rouge', 149, 105, 30)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A05', 'Lampe2', 550, 'Blanc', 149, 105, 10)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A06', 'Lampe3', 550, 'Bleu', 149, 105, 50)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A07', 'Clavier sans fil', 500.0, 'Noir', 700, 400, 15)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A08', 'Casque audio', 140, 'Vert', 280, 230, 15)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A09', 'Crayon', 20.0, 'rouge', 3, 1, 200)
+	INTO articles(code_article, libelle_article, poids_article, couleur_article,prix_vente, prix_achat, stock)
+		VALUES	('A10', 'Crayon luxe', 20.0, 'rouge', 6, 3, 190)
+SELECT * FROM dual;
+
+	COMMIT;
+	
+--Créez un script nommé loadclient.sql pour insérer un client dans la table "clients" en mode interactif. Le script doit demander à l'utilisateur de saisir les informations du client et les insérer.
+ACCEPT		code_client PROMPT 'Please enter the code number:'
+ACCEPT  	nom_client PROMPT 'Please enter your family name:'
+ACCEPT  	prenom_client PROMPT 'Please enter your name:'
+ACCEPT  	ville_client PROMPT 'Please enter your city name'
+ACCEPT  	email_client PROMPT 'Please enter your email'
+ACCEPT  	type_client PROMPT 'Please enter the department number'
+
+INSERT INTO 	clients (code_client, nom_client, prenom_client, ville_client ,email_client ,type_client)
+VALUES			('&code_client', '&nom_client', '&prenom_client', '&ville_client', '&email_client', '&type_client&);

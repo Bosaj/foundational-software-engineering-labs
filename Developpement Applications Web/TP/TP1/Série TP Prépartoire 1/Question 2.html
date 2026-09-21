@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+</head>
+<body>
+    <h2>Formulaire</h2>
+    <form action="#" method="post">
+        <div class="hey">
+            <label for="nom">Nom :</label><br>
+            <input type="text" id="nom" name="nom" required>
+            <span>*</span><br>
+            <small>Veuillez saisie votre nom.</small>
+        </div>
+        <br>
+        <div>
+            <label for="prenom">Prénom : </label><br />
+            <input type="text" id="prenom" name="prenom" required>
+            <span>*</span><br>
+            <small>Veuillez saisie votre prénom.</small>
+        </div>
+        <br />
+        <div>
+            <label for="adress">Adresse : </label><br>
+            <textarea id="adress" name="adress" rows="20" cols="50"></textarea><br>
+            <small>Veuillez saisie votre adresse.</small>
+        </div>
+        <br />
+        <div>
+            <label for="e_mail"> Email : </label><br>
+            <input type="email" id="e_mail" name="e_mail" required />
+            <span>*</span><br>
+            <small>Veuillez saisie votre Email.</small>
+        </div>
+        <br />
+        <div>
+            <label for="tele">Téléphone : </label><br>
+            <input type="tel" id="tele" name="tele" required />
+            <span>*</span><br>
+            <small>Veuillez saisie votre numéro de téléphone.</small>
+        </div>
+        <br />
+        <div>
+            <label for="site">Site Web : </label><br>
+            <input type="url" id="site" name="site" /><br>
+        </div>
+        <br />
+        <div>
+            <label for="naissance"> Date de Naissance : </label><br>
+            <input type="date" id="naissance" name="naissance" required />
+            <span>*</span><br>
+        </div>
+        <br />
+        <div>
+            <label for="nombreEnfants">Nombre d'enfants : </label><br>
+            <input type="number" id="nombreEnfants" name="nombreEnfants" min="0" step="1" /><br>
+        </div>
+        <br />
+        <div>
+            <label for="couleur">Couleur préférée :</label><br>
+            <input type="color" id="couleur" name="couleur" /><br>
+            <small>Veuillez sélectionner votre couleur préférée.</small>
+        </div>
+        <br />
+        <div>
+            <label for="filiere">Sélectionner votre filiére :</label><br>
+            <select name="filire" id="filiere">
+                <option value="">--choisir--</option>
+                <option value="GI">GI</option>
+                <option value="IA">IA</option>
+                <option value="RS">RS</option>
+                <option value="Robotique">Robotique</option>
+            </select><br />
+        </div>
+        <br />
+        <div>
+            <h3>Langues maitrisées:</h3> 
+            <input type="checkbox" id="language1" name="language1" value="Arabe" />
+            <label for="language1">Je maîtrise l'Arabe </label><br />
+            <input type="checkbox" id="language2" name="language2" balue="Anglais" />
+            <label for="language2">Je maîtrise l'Anglais</label><br />
+            <input type="checkbox" id="language3" name="language3" value="Français" />
+            <label for="language3">Je maîtrise le Français</label><br />
+
+        </div>
+        <br />
+        <div>
+            <input type="radio" id="grb1" name="groupe" value="101" />
+            <label for="grb1">Groupe 101</label><br />
+            <input type="radio" id="grb2" name="groupe" value="102" />
+            <label for="grb2">Groupe 102</label><br />
+            <small>Choisir votre groupe.</small>
+        </div>
+        <br />
+        <div>
+            <label for="module">Module :</label>
+            <select id="module" name="module">
+                <option value="M01">M01</option>
+                <option value="M02">M02</option>
+                <option value="M03">M03</option>
+                <option value="M04">M04</option>
+                <option value="M05">M05</option>
+            </select><br />
+            <small>Veuillez sélectionner un module.</small>
+        </div>
+        <br />
+        <div>
+            <input type="file" id="cv" name="cv" /><br />
+            <small>Veuillez télecharger votre CV</small>
+            <label for="cv">CV :</label>
+
+        </div>
+        <br />
+        <div>
+            <button type="submit">Soumettre</button><br />
+            <br />
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+</html>

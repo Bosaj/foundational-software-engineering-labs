@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+                <meta name="viewport" content="width-device-width, initial-scale=1.0">
+                <title>TP N°2</title>
+                <style>
+                    #colorDiv{
+                        width: 300px;
+                        height: 300px;
+                        background-color: red;
+                        margin-bottom: 10px;
+                    }
+                </style>
+    </head>
+    <body>
+        <div id="colorDiv"></div>
+        <select id="colorSelect">
+            <option value="red">Rouge</option>
+            <option value="blue">Bleu</option>
+            <option value="green">Vert</option>
+            <option value="Black">Noir</option>
+            <option value="yellow">Jaune</option>
+        </select>
+        <button id="changeColorBtn">Changer la Couleur</button><br><br>
+        <label for="length">Longueur : </label>
+        <input type="text" id="length"><br><br>
+        <label for="width">Largeur : </label>
+        <input type="text" id="width"><br<br>
+        <button id="changeSizeBtn">Changer la Taille</button><br><br>
+        <button id="toggleBtn">Cacher</button>
+        <button id="resetBtn">Réinitialiser</button>
+
+        <script>
+            const colorDiv = document.getElementById("colorDiv");
+            const colorSelect = document.getElementById("colorSelect");
+            const changeColorBtn = document.getElementById("changeColorBtn");
+            const lengthInput = document.getElementById("length");
+            const widthInput = document.getElementById("width");
+            const changeSizeBtn = document.getElementById("changeSizeBtn");
+            const toggleBtn = document.getElementById("toggleBtn");
+            const resetBtn = document.getElementById("resetBtn");
+
+            changeColorBtn.addEventListener("click", function(){
+                colorDiv.style.backgroundColor = colorSelect.value;
+            });
+
+            changeSizeBtn.addEventListener("click", function(){
+                const length = lengthInput.value;
+                const width =  widthInput.value;
+                if (!isNaN(length) && !isNaN(width) && parseInt(length) >= 0 && parseInt(width) >= 0){
+                    colorDiv.style.width = width + "px";
+                    colorDiv.style.height = length + "px";
+                } else {
+                    alert("Veuillez saisir des valeur Numériques et Postives pour la Langueur et la Largeur.");
+                }
+            });
+
+            toggleBtn.addEventListener("click", function(){
+                if(colorDiv.style.display === "none"){
+                    colorDiv.style.display = "block";
+                    toggleBtn.textContent = "Cacher";
+                } else {
+                    colorDiv.style.display = "none";
+                    toggleBtn.textContent = "Afficher";
+                }
+            });
+
+            resetBtn.addEventListener("click", function(){
+                colorDiv.style.backgroundColor = "red";
+                colorSelect.selectedIndex = 0;
+                lengthInput.value= "";
+                widthInput.value = "";
+                colorDiv.style.width = "300px";
+                colorDiv.style.height = "300px";
+                toggleBtn.textContent = "Cacher";
+                colorDiv.style.display = "block";
+            });
+
+
+        </script>
+    </body>
+        
+</html>

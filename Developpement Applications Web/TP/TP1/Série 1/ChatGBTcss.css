@@ -1,0 +1,137 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .logo img {
+    height: 50px;
+    width: auto;
+  }
+  
+  nav {
+    margin-top: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .donate-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .donate-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Main Content Styles */
+  main {
+    padding: 20px 0;
+  }
+  
+  .banner {
+    background-color: #17a2b8;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .presentation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .presentation .text {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .presentation img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .testimonies {
+    background-color: #ffc107;
+    padding: 40px 0;
+  }
+  
+  .testimonies h2 {
+    text-align: center;
+  }
+  
+  .testimony {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .testimony img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .call-to-action {
+    background-color: #dc3545;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  footer p {
+    margin-bottom: 10px;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer ul a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  footer ul a:hover {
+    text-decoration: underline;
+  }
+  

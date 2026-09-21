@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CONTACTS</title>
+    <style>
+      .container {
+        box-sizing: border-box;
+        width: 900px;
+        margin: 0 auto;
+        font-family: sans-serif;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .nav a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px;
+        color: #fff;
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      .nav a:hover {
+        box-shadow: 7px 7px 5px rgba(114, 114, 114, 0.3);
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        margin-top: 15px;
+        background-color: #e9e9e9;
+      }
+
+      .nav li:nth-child(1) {
+        background-color: #92ce0a;
+      }
+      .nav li:nth-child(2) {
+        background-color: #ffe202;
+      }
+      .nav li:nth-child(3) {
+        background-color: #0052da;
+      }
+      .nav li:nth-child(4) {
+        background-color: #ff7f00;
+      }
+      .nav li:nth-child(5) {
+        background-color: #04bacf;
+      }
+      h2 {
+        color: #0052da;
+        font-weight: normal;
+      }
+      article {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+      }
+      .btn_2 {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+        margin-top: 30px;
+      }
+      #btn {
+        background-color: #92ce0a;
+        border-color: #92ce0a;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      article a {
+        text-decoration: none;
+        color: #0052da;
+      }
+      footer {
+        border-top: 2px solid rgb(185, 185, 185);
+      }
+      h3 {
+        margin-bottom: 0px;
+        color: #0052da;
+        font-weight: bold;
+      }
+      footer p {
+        margin-top: 2px;
+        font-size: 10px;
+      }
+      .logos li img {
+        width: 40px;
+        height: 40px;
+      }
+      .logos ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 4px;
+      }
+
+      .logos li:nth-child(1) {
+        background-color: #92ce0a;
+      }
+      .logos li:nth-child(2) {
+        background-color: #ffe202;
+      }
+      .logos li:nth-child(3) {
+        background-color: #0052da;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      .contact_flex {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <header>
+      <div class="logo">
+        <img src="images/logo.jpg" alt="logo" width="200px" height="100px" />
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a href="index_3.html">HOME</a></li>
+          <li><a href="#">VIDEOS</a></li>
+          <li><a href="#">COMPAIGNS</a></li>
+          <li><a href="#">VOLUNTEER</a></li>
+          <li><a href="index_4.html">CONTACTS</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10368.258411356364!2d-73.96539148395973!3d40.663226127114356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24416947c2109%3A0x82765c7404007886!2sBrooklyn%2C%20%C3%89tat%20de%20New%20York%2C%20%C3%89tats-Unis!5e1!3m2!1sfr!2sma!4v1708704677850!5m2!1sfr!2sma"
+      width="100%"
+      height="400px"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    <article>
+      <div class="adresse">
+        <h2>ADDRESS</h2>
+        <p>The Company Name</p>
+        <p>Offshore</p>
+        <p>Oujda</p>
+        <p>Freephone:&nbsp; +1 800 559 6580</p>
+        <p>Telephone:&nbsp; +1 800 603 6035</p>
+        <p>
+          FAX:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          +1 800 889 9898
+        </p>
+        <p>E-mail: <a href="#">mail@demolink.org</a></p>
+        <p>Skype: <a href="#">@skypename</a></p>
+      </div>
+      <div class="contact">
+        <h2>CONTACT FORM</h2>
+        <form>
+          <div class="contact_flex">
+            <input
+              type="text"
+              placeholder="Name:"
+              id="name"
+              name="name"
+              required
+            />
+
+            <input
+              type="email"
+              placeholder="E-mail"
+              id="email"
+              name="email"
+              required
+            />
+
+            <input
+              type="tel"
+              placeholder="Phone"
+              id="phone"
+              name="phone"
+              required
+            />
+          </div>
+          <div>
+            <br />
+            <textarea
+              placeholder="Message"
+              id="message"
+              name="message"
+              rows="12"
+              cols="80"
+            ></textarea>
+          </div>
+          <div class="btn_2">
+            <input type="submit" id="btn" value="SEND" />
+            <input type="reset" id="btn" value="CLEAR" />
+          </div>
+        </form>
+      </div>
+    </article>
+    <footer>
+      <div class="footer">
+        <div>
+          <h3>Dev digital</h3>
+          <p>© 2020 | Privacy Policy</p>
+        </div>
+        <div class="logos">
+          <ul>
+            <li><img src="images/facebook.png" alt="facebook" /></li>
+            <li><img src="images/twitter.png" alt="twitter" /></li>
+            <li><img src="images/pinterest.png" alt="pinterest" /></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

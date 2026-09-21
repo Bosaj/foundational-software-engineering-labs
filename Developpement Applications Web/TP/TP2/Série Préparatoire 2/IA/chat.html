@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire de contact</title>
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+    }
+    input {
+        margin-top: 5px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    input.error {
+        border-color: red;
+    }
+    input.success {
+        border-color: green;
+    }
+    .error-message {
+        color: red;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<form id="contactForm">
+    <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required>
+        <div class="error-message"></div>
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <div class="error-message"></div>
+    </div>
+    <div id="telephones">
+        <div class="form-group">
+            <label for="telephone1">Téléphone:</label>
+            <input type="text" id="telephone1" name="telephone" required>
+            <div class="error-message"></div>
+        </div>
+    </div>
+    <button type="button" id="ajouterTelephone">Ajouter numéro de téléphone</button>
+    <button type="submit">Envoyer</button>
+</form>
+
+<script>
+    document.getElementById("ajouterTelephone").addEventListener("click", function() {
+        var telephonesDiv = document.getElementById("telephones");
+        var lastTelephoneInput = telephonesDiv.lastElementChild.querySelector("input");
+        var lastTelephoneId = parseInt(lastTelephoneInput.id.match(/\d+/)[0]);
+        var newTelephoneId = lastTelephoneId + 1;
+
+        var newFormGroup = document.createElement("div");
+        newFormGroup.classList.add("form-group");
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "telephone" + newTelephoneId);
+        label.textContent = "Téléphone:";
+        newFormGroup.appendChild(label);
+
+        var input = document.createElement("input");
+        input.setAttribute("type", "text");
+        input.setAttribute("id", "telephone" + newTelephoneId);
+        input.setAttribute("name", "telephone");
+        input.required = true;
+        newFormGroup.appendChild(input);
+
+        var deleteLink = document.createElement("a");
+        deleteLink.setAttribute("href", "#");
+        deleteLink.textContent = "Supprimer";
+        deleteLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            if (telephonesDiv.childElementCount > 1) {
+                newFormGroup.remove();
+            }
+        });
+        newFormGroup.appendChild(deleteLink);
+
+        telephonesDiv.appendChild(newFormGroup);
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        var inputs = document.querySelectorAll("input[required]");
+        var formValid = true;
+
+        inputs.forEach(function(input) {
+            if (!input.value.trim()) {
+                input.classList.add("error");
+                input.nextElementSibling.textContent = "Champ obligatoire !";
+                formValid = false;
+            } else {
+                input.classList.remove("error");
+                input.classList.add("success");
+                input.nextElementSibling.textContent = "";
+            }
+        });
+
+        if (!formValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

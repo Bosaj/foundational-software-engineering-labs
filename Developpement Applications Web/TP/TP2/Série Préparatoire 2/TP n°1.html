@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculation</title>
+</head>
+<body>
+    <h1>Factorial Calculation</h1>
+
+    <script>
+        
+        function factorielle(nombre) {
+            if (nombre === 0 || nombre === 1) {
+                return 1;
+            } else {
+                return nombre * factorielle(nombre - 1);
+            }
+        }
+
+        var resultatFactorielle5 = factorielle(5);
+            alert("Le factorielle de 5 est : " + resultatFactorielle5);
+
+        
+        var continuerCalcul;
+
+        
+        do {
+            
+            var nombreSaisi = prompt("Entrez un nombre positif pour calculer sa factorielle :");
+
+            
+            if (!isNaN(nombreSaisi) && parseInt(nombreSaisi) >= 0) {
+                nombreSaisi = parseInt(nombreSaisi); 
+
+                
+                var resultatFactorielle = factorielle(nombreSaisi);
+                alert("La factorielle de " + nombreSaisi + " est : " + resultatFactorielle);
+            } else {
+                alert("Vous devez saisir un nombre entier positif. Veuillez réessayer.");
+            }
+
+            
+            continuerCalcul = confirm("Voulez-vous effectuer un autre calcul de factorielle ?");
+        } while (continuerCalcul);
+    </script>
+</body>
+</html>

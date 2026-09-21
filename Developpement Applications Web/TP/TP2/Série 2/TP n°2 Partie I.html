@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapez votre commentaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: left;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            margin-right: 100px; /* Ajout de marge à droite pour séparer le titre du champ */
+        }
+        label {
+            width: 130px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px; /* Ajout d'une marge en bas */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 300px; /* Largeur fixe pour tous les champs */
+            padding: 10px;
+            margin-left: 10px; /* Espacement entre le champ et le message d'erreur */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 10%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tapez votre commentaire</h1>
+    <hr>
+    <form id="contactForm" onsubmit="return false;"> <!-- Prevent default submission -->
+
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" placeholder="Nom">
+            <span class="error-message" id="nomError"></span>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+            <span class="error-message" id="prenomError"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Email">
+            <span class="error-message" id="emailError"></span>
+        </div>
+        <div class="form-group">
+            <label for="commentaire">Commentaire :</label>
+            <textarea id="commentaire" name="commentaire" placeholder="Tapez votre commentaire"></textarea>
+            <span class="error-message" id="commentaireError"></span>
+        </div>
+        <hr>
+        <button type="submit" onclick="validateForm()">Envoyer</button> <!-- Call the validation function on button click -->
+    </form>
+
+    <script>
+        // Function to validate form
+        function validateForm() {
+            const nomInput = document.getElementById('nom');
+            const prenomInput = document.getElementById('prenom');
+            const emailInput = document.getElementById('email');
+            const commentaireInput = document.getElementById('commentaire');
+            const nomError = document.getElementById('nomError');
+            const prenomError = document.getElementById('prenomError');
+            const emailError = document.getElementById('emailError');
+            const commentaireError = document.getElementById('commentaireError');
+
+            // Check for presence of data
+            if (nomInput.value.trim() === '') {
+                nomError.textContent = 'Nom est obligatoire';
+            } else {
+                nomError.textContent = '';
+            }
+
+            if (prenomInput.value.trim() === '') {
+                prenomError.textContent = 'Prénom est obligatoire';
+            } else {
+                prenomError.textContent = '';
+            }
+
+            if (emailInput.value.trim() === '') {
+                emailError.textContent = 'Email est obligatoire';
+            } else {
+                emailError.textContent = '';
+            }
+
+            if (commentaireInput.value.trim() === '') {
+                commentaireError.textContent = 'Commentaire est obligatoire';
+            } else {
+                commentaireError.textContent = '';
+            }
+
+            // Check for characters in name and surname
+            const nameRegex = /^[a-zA-Z\s]*$/;
+            if (!nameRegex.test(nomInput.value.trim())) {
+                nomError.textContent = 'Nom ne doit contenir que des lettres (a-z ou A-Z)';
+            }
+
+            if (!nameRegex.test(prenomInput.value.trim())) {
+                prenomError.textContent = 'Prénom ne doit contenir que des lettres (a-z ou A-Z)';
+            }
+
+            // Limit comment length and display an error message
+            if (commentaireInput.value.trim().length > 50) {
+                commentaireInput.value = commentaireInput.value.trim().substring(0, 50);
+                commentaireError.textContent = 'Le commentaire ne doit pas dépasser 50 caractères';
+            }
+
+            // Submit the form if no errors are present
+            if (nomError.textContent === '' && prenomError.textContent === '' && emailError.textContent === '' && commentaireError.textContent === '') {
+                document.getElementById('contactForm').submit();
+            }
+        }
+    </script>
+</body>
+</html>

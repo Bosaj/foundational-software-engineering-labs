@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table th, table td {
+    padding: 30px;
+    font-size: 60px;
+}
+
+/* Unités de mesure */
+
+div { font-size: 20px; }
+
+#p1 { font-size: 12px; }
+
+#p2 { font-size: 1em; }
+
+#p3 { font-size: 1rem; }
+
+#p5 { font-size: 20vh; }
+
+/* Positionnement */
+
+#d1 {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+#d2 {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+#d3 {
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#d4 {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+}
+
+/* FlexBox */
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 500px;
+}
+
+#container div {
+    width: 200px;
+    height: 200px;
+}
+
+#container div:nth-child(1) { background-color: red; }
+#container div:nth-child(2) { background-color: blue; }
+#container div:nth-child(3) { background-color: green; }
+#container div:nth-child(4) { background-color: chocolate; }
+#container div:nth-child(5) { background-color: aqua; }
+#container div:nth-child(6) { background-color: brown; }
+#container div:nth-child(7) { background-color: chartreuse; }
+#container div:nth-child(8) { background-color: red; }
+
+/* Animations */
+
+#d1-anim {
+    width: 300px;
+    height: 100px;
+    background-color: cyan;
+    border: 1px solid black;
+}
+
+#d1-anim:hover {
+    transform: translate(50px, 0);
+}
+
+@keyframes d2Anim
+{
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+/* L'élément sur lequel s’appliquer l'animation */
+#d2-anim
+{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: d2Anim;
+    animation-duration: 4s;
+}
+
+/* Media queries */
+
+@media screen and (min-width : 200px)
+{
+    body
+    {
+        background-color :white;
+    }
+}
+@media screen and (min-width : 480px)
+{
+    body
+    {
+        background-color : white;
+    }
+}
+
+/* Selectors */
+
+
+
+#wrap p {
+    margin-left: 30px;
+    font-size: 12px;
+    color: red;
+}
+
+#pp {
+    background-color: #000000;
+}

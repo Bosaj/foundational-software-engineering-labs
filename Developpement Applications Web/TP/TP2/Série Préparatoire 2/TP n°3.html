@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP N°3 - Carrousel d'images</title>
+    <style>
+        body {
+            background-color: #292929; /* Light gray background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 500px; /* Fixed width for the carousel container */
+            height: auto; /* Adjust height based on image height */
+            margin: 50px auto;
+            overflow: hidden;
+            border: 2px solid #000000; /* Border for the carousel container */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%; /* Set the height of the carousel to the tallest image */
+        }
+
+        .carousel img {
+            width: 100%; /* Set width to match the container */
+            max-height: 100%; /* Ensure the image fits within its container */
+            margin: auto; /* Center the image vertically and horizontally */
+            display: block; /* Ensure proper spacing between images */
+            border-right: 0px solid #000000; /* Border between images */
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+        <button id="prevBtn">❮</button>
+        <button id="nextBtn">❯</button>
+    </div>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        let intervalId;
+
+        function showImage(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % carousel.children.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + carousel.children.length) % carousel.children.length;
+            showImage(currentIndex);
+        }
+
+        function startCarousel() {
+            intervalId = setInterval(nextImage, 1000);
+        }
+
+        function stopCarousel() {
+            clearInterval(intervalId);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            stopCarousel();
+            nextImage();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopCarousel();
+            prevImage();
+        });
+
+        carousel.addEventListener('mouseover', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+
+        startCarousel();
+    </script>
+</body>
+</html>

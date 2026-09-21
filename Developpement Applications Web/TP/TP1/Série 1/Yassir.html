@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1</title>
+    <style>
+        #part1 {
+            width: 100%;
+            height: 40px;
+        .buttons {
+            font-size: 20px;
+            display: flex;
+            justify-content: flex-end; 
+            .home {
+                padding: 10px 10px;
+                font-size: 20px;
+                background-color: greenyellow ;
+                border: none;
+                cursor: pointer;
+                border-color: transparent; 
+            }
+            .videos {
+                padding: 10px 10px;
+                font-size: 20px;
+                background-color: yellow;
+                border: none;
+                cursor: pointer;
+                border-color: transparent; 
+            }
+            .campaigns {
+                padding: 10px 10px;
+                font-size: 20px;
+                background-color: blue;
+                border: none;
+                cursor: pointer;
+                border-color: transparent; 
+
+            }
+            .volunteer {
+                padding: 10px 10px;
+                font-size: 20px;
+                background-color: orangered;
+                border: none;
+                cursor: pointer;
+                border-color: transparent; 
+            }
+            .contacts {
+                padding: 10px 10px;
+                font-size: 20px;
+                background-color: skyblue;
+                cursor: pointer;
+                border: none;
+                border-color: transparent; 
+            }
+        }
+        .logo {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+        }
+    }
+       #part2 {
+          display: flex;
+          .droite {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            .child {
+              height: 60%;
+            }
+            .child img {
+              width: 100%;
+              height: 100%;
+            }
+            .gr {
+              height: 20%;
+              background-color: greenyellow;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: large;
+              text-align: center;
+            }
+          }      
+          justify-content: space-between;
+        }
+          .gauche {
+            width: 33%;
+            .donate {
+                height: 20%;
+                padding: 10px 10px;
+                font-size: 20px;
+                text-align: center;
+                background-color: red;
+                border: none;
+                height: 50px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .para {
+                height: 70%;
+                .titre {
+                  height: 20%;
+                  font-family: 'Times New Roman', Times, serif;
+                  text-align: center;
+                }
+                .texte {
+                  height: 70%;
+                }
+              }
+  
+    }
+    #part3 {
+      display: flex;
+      
+    }
+
+    </style>
+</head>
+<body>
+    <div id="part1">
+      <div class="buttons">
+        <button class="home">HOME</button>
+        <button class="videos">VIDEOS</button>
+        <button class="campaigns">CAMPAIGNS</button>
+        <button class="volunteer">VOLUNTEER</button>
+        <button class="contacts">CONTACTS</button>
+      </div>
+      <div class="logo">
+        <img src="logo.jpg" alt="LOGO">
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="part2">
+      <div class="droite">
+        <div class="child">
+          <img src="page1_img1.jpg" alt="child">
+        </div>
+        <div class="gr">
+           <h3>HOPE</h3>
+        </div>
+      </div>
+        <div class="gauche">
+           <div class="donate">
+            <button class="donate">DONATE</button>
+           </div>
+           <div class="para">
+              <div class="titre">
+                <h4>WE CAN CHANGE THE LIFE OF THOSE WHO HAVE NO HOPE</h4>
+              </div>
+              <div class="texte">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque dignissimos incidunt itaque blanditiis pariatur officia ipsam aliquid mollitia, ut, eos atque corrupti</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sint doloremque harum neque voluptates porro sed tempore quaerat cumque autem? Modi minima ipsum beatae quas alias accusamus sunt optio iusto?</p>
+              </div>
+           </div>
+          </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="part3">
+      <div class="titre1">
+        <h3>YOU CAN HELP THEM</h3>
+      </div>
+      <div class="enfants">
+        <div class="enfant1">
+          <div class="img1">
+            <img src="page1_img4.jpg" alt="1">
+          </div>
+          <div class="nom1">
+            <p>JIM</p><br>
+            <p>8 years</p>
+          </div>
+        </div>
+        <div class="enfant2">
+          <div class="img2">
+            <img src="page1_img5.jpg" alt="2">
+          </div>
+          <div class="nom2">
+            <p>ANN</p><br>
+            <p>3 years</p>
+          </div>
+        </div>
+        <div class="enfant3">
+          <div class="img3">
+            <img src="page1_img6.jpg" alt="3">
+          </div>
+          <div class="nom3">
+            <p>LINDA</p><br>
+            <p>5 years</p>
+          </div>
+        </div>
+        <div class="enfant4">
+          <div class="img4">
+            <img src="page1_img7.jpg" alt="4">
+          </div>
+          <div class="nom4">
+            <p>MARK</p><br>
+            <p>6 years</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</head>

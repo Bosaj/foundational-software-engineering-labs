@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact</title>
+    <style>
+        .error {
+            border: 3px solid red;
+        }
+
+        .success {
+            border: 3px solid rgb(0, 218, 0);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 12px;
+        }
+
+        .telephone-input {
+            margin-bottom: 10px; /* Espacement entre chaque champ de téléphone */
+        }
+
+        /* Ajout de styles pour les étiquettes des champs de nom et de prénom */
+        .form-label {
+            display: inline-block;
+            width: 57px; /* Ajustez la largeur selon vos besoins */
+            text-align: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulaire de Contact</h1>
+    <form id="contactForm">
+        <label for="nom" class="form-label">Nom </label>
+        <input type="text" id="nom" name="nom" required>
+        <span class="error-message" id="nomError"></span><br>
+        <br>
+        <label for="prenom" class="form-label">Prénom </label>
+        <input type="text" id="prenom" name="prenom" required>
+        <span class="error-message" id="prenomError"></span><br>
+        <br>
+        <div id="telephoneInputs">
+            <div class="telephone-input">
+                <label for="telephone1">Téléphone </label>
+                <input type="tel" id="telephone1" name="telephone1" required>
+                <span class="error-message" id="telephoneError1"></span>
+            </div>
+        </div>
+        
+        <div id="ajouterTelephoneBtn">
+            <br><button type="button" onclick="ajouterTelephone()">Ajouter numéro de téléphone</button><br>
+        </div>
+        <br>
+        <button type="button" onclick="validerFormulaire()">Envoyer</button>
+    </form>
+
+    <script>
+        function ajouterTelephone() {
+            const form = document.getElementById("contactForm");
+            const telephoneInputs = document.querySelectorAll('.telephone-input');
+            const lastTelephoneInput = telephoneInputs[telephoneInputs.length - 1];
+            const newTelephoneInput = document.createElement('div');
+            newTelephoneInput.classList.add('telephone-input');
+
+            const newLabel = document.createElement('label');
+            newLabel.textContent = 'Téléphone ';
+            newLabel.htmlFor = 'telephone' + (telephoneInputs.length + 1);
+
+            const newInput = document.createElement('input');
+            newInput.type = 'tel';
+            newInput.id = 'telephone' + (telephoneInputs.length + 1);
+            newInput.name = 'telephone' + (telephoneInputs.length + 1);
+            newInput.required = true;
+
+            // Ajouter un événement pour vérifier et changer la couleur de la bordure
+            newInput.addEventListener('input', function() {
+                if (newInput.value.trim() !== '') {
+                    newInput.classList.remove('error');
+                    newInput.classList.add('success');
+                } else {
+                    newInput.classList.remove('success');
+                    newInput.classList.add('error');
+                }
+            });
+
+            const deleteLink = document.createElement('a');
+            deleteLink.textContent = 'Supprimer';
+            deleteLink.href = '#';
+            deleteLink.onclick = function() {
+                supprimerTelephone(newTelephoneInput);
+                return false;
+            };
+
+            const errorMessage = document.createElement('span');
+            errorMessage.classList.add('error-message');
+            errorMessage.id = 'telephoneError' + (telephoneInputs.length + 1);
+
+            newTelephoneInput.appendChild(newLabel);
+            newTelephoneInput.appendChild(newInput);
+            newTelephoneInput.appendChild(deleteLink);
+            newTelephoneInput.appendChild(errorMessage);
+            
+            form.insertBefore(newTelephoneInput, document.getElementById("ajouterTelephoneBtn"));
+        }
+
+
+        function supprimerTelephone(input) {
+            const form = document.getElementById("contactForm");
+            const telephoneInputs = document.querySelectorAll('.telephone-input');
+            if (telephoneInputs.length > 1 && input !== telephoneInputs[0]) {
+                input.remove();
+            }
+        }
+
+        function validerFormulaire() {
+            const nomInput = document.getElementById('nom');
+            const prenomInput = document.getElementById('prenom');
+            const firstTelephoneInput = document.getElementById('telephone1');
+            const firstErrorMessage = document.getElementById('telephoneError1');
+            let isValid = true;
+
+            // Vérification du champ "Nom"
+            if (!nomInput.value.trim()) {
+                nomInput.classList.add("error");
+                nomInput.classList.remove("success");
+                document.getElementById('nomError').textContent = "Champ obligatoire !";
+                isValid = false;
+            } else {
+                nomInput.classList.remove("error");
+                nomInput.classList.add("success");
+                document.getElementById('nomError').textContent = "";
+            }
+
+            // Vérification du champ "Prénom"
+            if (!prenomInput.value.trim()) {
+                prenomInput.classList.add("error");
+                prenomInput.classList.remove("success");
+                document.getElementById('prenomError').textContent = "Champ obligatoire !";
+                isValid = false;
+            } else {
+                prenomInput.classList.remove("error");
+                prenomInput.classList.add("success");
+                document.getElementById('prenomError').textContent = "";
+            }
+
+            // Vérification du premier champ "Téléphone"
+            if (!firstTelephoneInput.value.trim()) {
+                firstTelephoneInput.classList.add("error");
+                firstTelephoneInput.classList.remove("success");
+                firstErrorMessage.textContent = "Champ obligatoire !";
+                isValid = false;
+            } else {
+                firstTelephoneInput.classList.remove("error");
+                firstTelephoneInput.classList.add("success");
+                firstErrorMessage.textContent = "";
+            }
+
+            // Vérification des autres champs de texte et de téléphone
+            const inputs = document.querySelectorAll('input[type="text"], input[type="tel"]');
+            inputs.forEach(input => {
+                if (input.required && !input.value.trim()) {
+                    input.classList.add("error");
+                    input.classList.remove("success");
+                    const errorMessageId = input.id + 'Error';
+                    document.getElementById(errorMessageId).textContent = "Champ obligatoire !";
+                    isValid = false;
+                } else {
+                    input.classList.remove("error");
+                    input.classList.add("success");
+                    const errorMessageId = input.id + 'Error';
+                    document.getElementById(errorMessageId).textContent = "";
+                }
+            });
+
+            // Vérification si tous les champs de téléphone sont remplis
+            const telephoneInputs = document.querySelectorAll('.telephone-input input[type="tel"]');
+            let allTelephoneInputsFilled = true;
+            telephoneInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    allTelephoneInputsFilled = false;
+                }
+            });
+
+            // Changer la couleur de bordure en vert si tous les champs de téléphone sont remplis
+            if (allTelephoneInputsFilled) {
+                telephoneInputs.forEach(input => {
+                    input.classList.remove("error");
+                    input.classList.add("success");
+                    const errorMessageId = input.id + 'Error';
+                    document.getElementById(errorMessageId).textContent = "";
+                });
+            }
+
+            return isValid;
+        }
+
+    </script>
+</body>
+</html>
