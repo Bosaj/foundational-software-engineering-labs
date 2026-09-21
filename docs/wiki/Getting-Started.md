@@ -18,8 +18,8 @@ Ensure your system meets the required runtime dependencies:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Bosaj/eniad-foundational-computing-labs.git
-   cd eniad-foundational-computing-labs
+   git clone https://github.com/Bosaj/foundational-software-engineering-labs.git
+   cd foundational-software-engineering-labs
    ```
 
 2. **Virtual Environment Setup (Python modules)**:

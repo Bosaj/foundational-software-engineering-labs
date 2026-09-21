@@ -1,5 +1,5 @@
 {
-  "name": "eniad-foundational-computing-labs",
+  "name": "foundational-software-engineering-labs",
   "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
   "customizations": {
     "vscode": {
