@@ -12,8 +12,8 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="MIT License" /></a>
   <a href="https://github.com/Bosaj/foundational-software-engineering-labs/actions"><img src="https://img.shields.io/badge/CI%20Pipeline-Passing-brightgreen?style=flat-square&logo=githubactions" alt="CI Status" /></a>
-  <a href="https://github.com/Bosaj/foundational-software-engineering-labs/stargazers"><img src="https://img.shields.io/github/stars/Bosaj/foundational-software-engineering-labs?style=flat-square&logo=github&color=00d9ff" alt="Stars" /></a>
-  <a href="https://github.com/users/Bosaj/projects/36"><img src="https://img.shields.io/badge/Project_Board-Project_36-blue?style=flat-square&logo=github" alt="Project Board" /></a>
+  <a href="https://github.com/Bosaj/foundational-software-engineering-labs"><img src="https://img.shields.io/github/stars/Bosaj/foundational-software-engineering-labs?style=flat-square&logo=github&color=00d9ff" alt="Stars" /></a>
+  <a href="https://github.com/users/Bosaj/projects"><img src="https://img.shields.io/badge/Project_Board-Project_36-blue?style=flat-square&logo=github" alt="Project Board" /></a>
   <a href="https://github.com/stars/Bosaj/lists/eniad-academic-projects"><img src="https://img.shields.io/badge/Curated_List-ENIAD_Academic_Projects-gold?style=flat-square&logo=github" alt="Curated List" /></a>
   <img src="https://img.shields.io/badge/Institution-ENIAD%20Berkane-FF6B00?style=flat-square" alt="ENIAD Berkane" />
 </p>
@@ -60,12 +60,12 @@ graph TD
 
 | Module Directory | Technology | Highlights & Topics Covered |
 |---|---|---|
-| [`Developpement Applications Web/`](Developpement%20Applications%20Web/) | HTML5 / CSS3 / JavaScript | Semantic structure, flexbox/grid, DOM manipulation, client-server models |
-| [`Ingénierie de Bases de Données/`](Ingnierie%20de%20Bases%20de%20Donnes/) | SQL / Oracle PL/SQL | Schema normalization (3NF/BCNF), complex joins, stored procedures, triggers |
-| [`Electronique et Automatique/`](Electronique%20et%20Automatique/) | Hardware & Automation | Logic circuits, embedded microcontrollers, sensor data acquisition |
-| [`POO C++/`](POO%20C++/) | C++ (C++17/20) | Pointer arithmetic, dynamic memory allocation, operator overloading, templates |
-| [`POO Java/`](POO%20Java/) | Java 17+ | OOP encapsulation, inheritance, polymorphism, Swing GUI, Java Collections |
-| [`POO Python/`](POO%20Python/) | Python 3 | Pythonic classes, magic methods, decorators, data manipulation algorithms |
+| [`Developpement Applications Web/`](./Developpement%20Applications%20Web/) | HTML5 / CSS3 / JavaScript | Semantic structure, flexbox/grid, DOM manipulation, client-server models |
+| [`Ingénierie de Bases de Données/`](Ing%C3%A9nierie%20de%20Bases%20de%20Donn%C3%A9es/) | SQL / Oracle PL/SQL | Schema normalization (3NF/BCNF), complex joins, stored procedures, triggers |
+| [`Electronique et Automatique/`](./Electronique%20et%20Automatique/) | Hardware & Automation | Logic circuits, embedded microcontrollers, sensor data acquisition |
+| [`POO C++/`](POO%20C%2B%2B/) | C++ (C++17/20) | Pointer arithmetic, dynamic memory allocation, operator overloading, templates |
+| [`POO Java/`](./POO%20Java/) | Java 17+ | OOP encapsulation, inheritance, polymorphism, Swing GUI, Java Collections |
+| [`POO Python/`](./POO%20Python/) | Python 3 | Pythonic classes, magic methods, decorators, data manipulation algorithms |
 
 
 ---
