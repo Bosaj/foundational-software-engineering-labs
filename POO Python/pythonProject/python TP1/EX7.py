@@ -17,7 +17,9 @@ while True:
     try:
         n = int(input("Entrez un entier strictement positif et supérieur à 100 : "))
         if n <= 100:
-            raise ValueError("le nombre doit être strictement positif et supérieur à 100.")
+            raise ValueError(
+                "le nombre doit être strictement positif et supérieur à 100."
+            )
         break
     except ValueError as ve:
         print("Erreur :", ve)

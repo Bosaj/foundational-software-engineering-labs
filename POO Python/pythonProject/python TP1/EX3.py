@@ -10,6 +10,7 @@
 # except ValueError:
 #     print("Oups, vous avez saisi autre chose que nombre")
 
+
 def factorielle(n):
     if n == 0:
         return 1

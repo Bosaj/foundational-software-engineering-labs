@@ -1,9 +1,9 @@
 def calculer_ttc(prix_hors_taxe, categories):
-    if categories == 'A':
+    if categories == "A":
         tva = 0.07
-    elif categories == 'B':
+    elif categories == "B":
         tva = 0.20
-    elif categories == 'C':
+    elif categories == "C":
         tva = 0.25
     else:
         raise ValueError("Catégorie invalide.")
@@ -16,7 +16,7 @@ while True:
     categorie = input("Entrez la catégorie du produit (A, B ou C) : ").upper()
     while True:
         try:
-            if categorie not in ['A', 'B', 'C']:
+            if categorie not in ["A", "B", "C"]:
                 raise ValueError("Catégorie invalide.")
             break  # Sortir de la boucle si l'entrée est valide
         except ValueError as ve:

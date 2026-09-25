@@ -5,6 +5,7 @@ def convertir_temps(seconde):
     secondes = seconde_restantes % 60
     return heures, minutes, secondes
 
+
 temps_en_secondes = int(input("Entrez un temps en secondes : "))
 heures, minutes, secondes = convertir_temps(temps_en_secondes)
 print(f"{heures}H : {minutes}m : {secondes}s")

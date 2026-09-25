@@ -24,7 +24,9 @@ class Course:
     def get_average_grade(self):
         if not self.students:
             return 0
-        return sum(student.get_grade() for student in self.students) / len(self.students)
+        return sum(student.get_grade() for student in self.students) / len(
+            self.students
+        )
 
 
 # Création des objets Student
@@ -38,7 +40,9 @@ course = Course("Maths", 2)
 # Ajout des étudiants au cours
 print("Ajout de student1 au cours :", course.add_student(student1))  # True
 print("Ajout de student2 au cours :", course.add_student(student2))  # True
-print("Ajout de student3 au cours :", course.add_student(student3))  # False (Capacité maximale atteinte)
+print(
+    "Ajout de student3 au cours :", course.add_student(student3)
+)  # False (Capacité maximale atteinte)
 
 # Affichage de la moyenne des notes des étudiants inscrits au cours
 print("Moyenne des notes des étudiants inscrits au cours :", course.get_average_grade())

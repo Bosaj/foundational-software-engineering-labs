@@ -1,11 +1,14 @@
 import math
 
+
 def cube(x):
-    return x ** 3
+    return x**3
+
 
 def volumeSphere(rayon):
     volume = (4 * math.pi * cube(rayon)) / 3
     return volume
+
 
 if __name__ == "__main__":
     try:

@@ -4,15 +4,17 @@ class myString:
 
     def append(self, text):
         self.string += text
+
     def pop(self, index):
         if 0 <= index < len(self.string):
-            self.string =self.string[:index] + self.string[index+1:]
+            self.string = self.string[:index] + self.string[index + 1 :]
             return self.string
         else:
             return "Index out of range"
 
+
 # Création d'instance de myString
-s1  = myString("Hello")
+s1 = myString("Hello")
 s2 = myString("bonjour")
 
 # Utilisation des méthode append() and pop()

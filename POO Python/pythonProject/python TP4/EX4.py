@@ -6,6 +6,7 @@ class Personne:
     def __str__(self):
         return f"Nom: {self.nom}, Âge: {self.age}"
 
+
 class Employe(Personne):
     def __init__(self, nom, age, salaire):
         super().__init__(nom, age)
@@ -13,6 +14,7 @@ class Employe(Personne):
 
     def show_salary(self):
         print(f"Le salaire de {self.nom} et {self._salaire}")
+
 
 class Manager(Employe):
     pass
