@@ -8,7 +8,11 @@ def fibonacci(nombre):
 
 while True:
     try:
-        n = int(input("Entrez un nombre entier positif pour le nombre de termes de la séquence de Fibonacci : "))
+        n = int(
+            input(
+                "Entrez un nombre entier positif pour le nombre de termes de la séquence de Fibonacci : "
+            )
+        )
         if n <= 0:
             raise ValueError("Le nombre doit être positif.")
         break  # Sortir de la boucle si l'entrée est valide

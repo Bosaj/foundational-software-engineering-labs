@@ -1,4 +1,4 @@
-for nombre in range(0,101,2 ):
+for nombre in range(0, 101, 2):
     print(f"Methode1: {nombre}")
 print("\n")
 for i in range(101):
