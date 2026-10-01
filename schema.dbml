@@ -1,0 +1,75 @@
+// DBML Schema for foundational-software-engineering-labs
+// Derived from Database Engineering Labs (Ingénierie de Bases de Données)
+
+Project database_engineering_labs {
+  database_type: 'Relational SQL'
+  Note: 'Database Engineering Academic Coursework & Order Management Schema'
+}
+
+Table clients {
+  code_client varchar(8) [pk]
+  nom_client varchar(255)
+  prenom_client varchar(255)
+  ville_client varchar(255)
+  email_client varchar(255)
+  type_client varchar(255)
+}
+
+Table fournisseurs {
+  code_fournisseur varchar(8) [pk]
+  nom_fournisseur varchar(255)
+}
+
+Table categories {
+  code_categorie varchar(8) [pk]
+  libelle_categorie varchar(255)
+}
+
+Table articles {
+  code_article varchar(8) [pk]
+  libelle_article varchar(255)
+  poids_article decimal(7,2)
+  couleur_article varchar(255)
+  prix_vente decimal(7,2)
+  prix_achat decimal(7,2)
+  stock integer
+  code_fournisseur varchar(8)
+  code_categorie varchar(8)
+}
+
+Table commandes {
+  code_commande varchar(8) [pk]
+  code_client varchar(8)
+  date_commande date
+}
+
+Table lig_cmd {
+  code_commande varchar(8)
+  code_article varchar(8)
+  quantite integer
+
+  indexes {
+    (code_commande, code_article) [pk]
+  }
+}
+
+Table livreur {
+  code_livreur varchar(8) [pk]
+  nom_livreur varchar(255)
+}
+
+Table livraison {
+  code_livraison varchar(8) [pk]
+  code_commande varchar(8)
+  code_livreur varchar(8)
+  date_livraison date
+}
+
+// Relationships
+Ref: articles.code_fournisseur > fournisseurs.code_fournisseur
+Ref: articles.code_categorie > categories.code_categorie
+Ref: commandes.code_client > clients.code_client
+Ref: lig_cmd.code_commande > commandes.code_commande
+Ref: lig_cmd.code_article > articles.code_article
+Ref: livraison.code_commande > commandes.code_commande
+Ref: livraison.code_livreur > livreur.code_livreur
