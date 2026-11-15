@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
-from pathlib import Path
 import sys
 import unittest
+from datetime import UTC, datetime
+from pathlib import Path
 
 SRC_DIR = str(Path(__file__).resolve().parents[1] / "src")
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
-from fse_core import (  # noqa: E402
+from fse_core import (
     AlgorithmicBenchmarkEngine,
     BankingLedgerService,
     InMemoryMetricsSink,
@@ -20,12 +20,12 @@ from fse_core import (  # noqa: E402
     ServiceContainer,
     ValidationError,
 )
-from fse_core.contracts import InMemoryLedgerRepository  # noqa: E402
+from fse_core.contracts import InMemoryLedgerRepository
 
 
 class _FixedClock:
     def now(self) -> datetime:
-        return datetime(2026, 1, 15, 12, 0, tzinfo=timezone.utc)
+        return datetime(2026, 1, 15, 12, 0, tzinfo=UTC)
 
 
 def _build_container() -> ServiceContainer:

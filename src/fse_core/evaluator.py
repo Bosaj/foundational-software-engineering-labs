@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
-from itertools import count
 import math
 import re
 import time
+from collections.abc import Sequence
+from itertools import count
 from typing import Any
 
 from .contracts import (
