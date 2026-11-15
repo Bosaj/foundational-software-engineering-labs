@@ -27,3 +27,32 @@ jobs:
           test -f SECURITY.md && echo "SECURITY.md OK"
           test -f CODE_OF_CONDUCT.md && echo "CODE_OF_CONDUCT.md OK"
           test -f docs/wiki/Home.md && echo "docs/wiki/Home.md OK"
+
+  test-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install QA tooling
+        run: pip install pytest ruff
+
+      - name: Run Ruff static analysis
+        run: ruff check src/ tests/
+
+      - name: Run automated test suite
+        run: pytest tests/ -v
+
+  container-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build hardened multi-stage container
+        run: docker build --target runtime -t fse-labs:ci .
