@@ -1,5 +1,5 @@
 # Stage 1: Prepare curated static web and lab artifacts
-FROM python:3.12-alpine AS builder
+FROM python:3.15-alpine AS builder
 
 WORKDIR /stage
 COPY . .
@@ -7,7 +7,7 @@ RUN rm -rf .git .github .pytest_cache __pycache__ tests \
     && printf '{"status":"ok","service":"foundational-software-engineering-labs"}\n' > /stage/healthz
 
 # Stage 2: Hardened non-root unprivileged Nginx runtime
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.31-alpine AS runtime
 
 WORKDIR /usr/share/nginx/html
 COPY --from=builder --chown=101:101 /stage /usr/share/nginx/html
